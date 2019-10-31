@@ -81,13 +81,10 @@ add_custom_command(
 # Include generated *.pb.h files
 include_directories("${CMAKE_CURRENT_BINARY_DIR}")
 
-# Targets greeter_[async_](client|server)
-foreach(_target
-    greeter_server greeter_async_server)
-    add_executable(${_target} "${_target}.cc"
+# Targets mikudos-service-cpp
+add_executable(mikudos-service-cpp "greeter_async_server.cc"
         ${hw_proto_srcs}
         ${hw_grpc_srcs})
-    target_link_libraries(${_target}
+    target_link_libraries(mikudos-service-cpp
         ${_GRPC_GRPCPP_UNSECURE}
         ${_PROTOBUF_LIBPROTOBUF})
-endforeach()
