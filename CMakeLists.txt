@@ -81,17 +81,13 @@ add_custom_command(
 # Include generated *.pb.h files
 include_directories("${CMAKE_CURRENT_BINARY_DIR}")
 
-include(CTest)
-enable_testing()
-
-# Targets (mikudos-service-cpp)
-add_executable(mikudos-service-cpp "greeter_server.cc"
+# Targets greeter_[async_](client|server)
+foreach(_target
+    greeter_server greeter_async_server)
+    add_executable(${_target} "${_target}.cc"
         ${hw_proto_srcs}
         ${hw_grpc_srcs})
-    target_link_libraries(mikudos-service-cpp
+    target_link_libraries(${_target}
         ${_GRPC_GRPCPP_UNSECURE}
         ${_PROTOBUF_LIBPROTOBUF})
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+endforeach()
