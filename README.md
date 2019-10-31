@@ -11,11 +11,13 @@ please install protobuf and grpc with grpc_cpp_plugin for generate code with the
 If you want to use CMake to generate your Makefile for your project. please use cmake to install the protobuf package and the grpc package. You can follow the steps:
 
 1. clone the gRPC package from GitHub `git clone https://github.com/grpc/grpc.git && cd grpc`
-2. update all the submodule for gRPC package `git submodule update --init --recursive`
-3. Build Protobuf using CMake `cd third_party/protobuf/cmake && cmake . && make && make install`
-4. Build gRPC als submodule
+2. update all the submodule for gRPC package `git submodule update --init`
+3. Change to the Protobuf Version you want, I used 3.10 to compatable with brew install version `cd third_party/protobuf && git checkout 3.10.x`
+4. Load all submodule `git submodule update --init --recursive`
+5. Build Protobuf using CMake `cd cmake && cmake . && make && make install`
+6. Build gRPC
     - cd to gRPC directory `cd ../../..`
     - `mkdir build_grpc && cd build_grpc`
-    - Config your gRPC as a submodule and use CMake to generate Makefile to build your own gRPC package `cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF -DgRPC_PROTOBUF_PROVIDER=package -DgRPC_ZLIB_PROVIDER=package -DgRPC_CARES_PROVIDER=package ..` (I'm use openssl@1.1 and the install folder of openssl with brew install is under that location, please change to your local openssl folder)
+    - Config your gRPC as a submodule and use CMake to generate Makefile to build your own gRPC package `cmake ..` (default gRPC use the boringssl as ssl module, I got error wenn i use openssl instead of the default. so just use the default =;) )
     - `make && make install`
-5. Congratulations! you can use CMake to build your project now!
+7. Congratulations! you can use CMake to build your project now!
