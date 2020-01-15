@@ -16,7 +16,7 @@ If you want to use CMake to generate your Makefile for your project. please use 
 4. Load all submodule `git submodule update --init --recursive`
 5. Build Protobuf using CMake `cd cmake && cmake . && make && make install`
 6. Build gRPC
-    - cd to gRPC directory `cd ../../..`
+    - cd to gRPC directory `cd ....`
     - `mkdir build_grpc && cd build_grpc`
     - Config your gRPC as a submodule and use CMake to generate Makefile to build your own gRPC package `cmake ..` (default gRPC use the boringssl as ssl module, I got error wenn i use openssl instead of the default. so just use the default =;) )
     - `make && make install`
