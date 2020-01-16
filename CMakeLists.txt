@@ -54,6 +54,10 @@ else()
     find_package(gRPC CONFIG REQUIRED)
     message(STATUS "Using gRPC ${gRPC_VERSION}")
 
+    # Find some other dependency
+    find_package(ZLIB REQUIRED)
+    find_package(c-ares REQUIRED)
+
     set(_GRPC_GRPCPP_UNSECURE gRPC::grpc++_unsecure)
     set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
     # set(_GRPC_CPP_PLUGIN_EXECUTABLE grpc_cpp_plugin)
