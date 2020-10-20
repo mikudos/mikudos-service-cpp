@@ -1,5 +1,5 @@
 {
-    "cmake.configureOnOpen": true,
+    "cmake.configureOnOpen": false,
     "files.associations": {
         "iostream": "cpp",
         "__functional_base": "cpp",
